@@ -37,7 +37,7 @@ class ResourceRoute extends Route implements IResourceRouter
 	 * @param array|string $metadata
 	 * @param int $flags
 	 */
-	public function __construct($mask, $metadata = array(), $flags = IResourceRouter::GET)
+	public function __construct($mask, $metadata = array())
 	{
 		$this->actionDictionary = array();
 		if (isset($metadata['action']) && is_array($metadata['action'])) {
@@ -49,14 +49,9 @@ class ResourceRoute extends Route implements IResourceRouter
 				$metadataParts = explode(':', $metadata);
 				$action = end($metadataParts);
 			}
-			foreach ($this->methodDictionary as $methodName => $methodFlag) {
-				if (($flags & $methodFlag) == $methodFlag) {
-					$this->actionDictionary[$methodFlag] = $action;
-				}
-			}
 		}
 
-		parent::__construct($mask, $metadata, $flags);
+		parent::__construct($mask, $metadata);
 	}
 
 	/**
