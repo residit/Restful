@@ -140,8 +140,8 @@ class RequestFilter
 	 */
 	protected function createPaginator($offset = NULL, $limit = NULL)
 	{
-		$offsetQ = $this->request->getQuery('offset', $offset);
-		$limitQ = $this->request->getQuery('limit', $limit);
+		$offsetQ = $this->request->getQuery('offset');
+		$limitQ = $this->request->getQuery('limit');
 
                 if($offsetQ !== NULL) {
                   $offset = $offsetQ;
