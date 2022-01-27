@@ -140,9 +140,18 @@ class RequestFilter
 	 */
 	protected function createPaginator($offset = NULL, $limit = NULL)
 	{
-		$offset = $this->request->getQuery('offset', $offset);
-		$limit = $this->request->getQuery('limit', $limit);
+		$offsetQ = $this->request->getQuery('offset', $offset);
+		$limitQ = $this->request->getQuery('limit', $limit);
 
+                if($offsetQ !== NULL) {
+                  $offset = $offsetQ;
+                }
+                
+                if($limitQ !== NULL) {
+                  $limit = $limitQ;
+                }
+                
+                
 		if ($offset === NULL || $limit === NULL) {
 			throw new InvalidStateException(
 				'To create paginator add offset and limit query parameter to request URL'
