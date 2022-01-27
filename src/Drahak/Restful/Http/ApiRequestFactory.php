@@ -36,7 +36,6 @@ class ApiRequestFactory
 	{
 		$request = $this->factory->createHttpRequest();
 		$url = $request->getUrl();
-		$url->setQuery($request->getQuery());
 
 		return new Request(
 			$url, NULL, $request->getPost(), $request->getFiles(), $request->getCookies(), $request->getHeaders(),
