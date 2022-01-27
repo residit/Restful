@@ -106,7 +106,7 @@ class ResourceRoute extends Route implements IResourceRouter
 	 * @param Http\IRequest $httpRequest
 	 * @return Application\Request|NULL
 	 */
-	public function match(Http\IRequest $httpRequest)
+	public function match(Http\IRequest $httpRequest): ?array
 	{
 		$appRequest = parent::match($httpRequest);
 		if (!$appRequest) {
