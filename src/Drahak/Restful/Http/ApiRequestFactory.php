@@ -38,7 +38,7 @@ class ApiRequestFactory
 		$url = $request->getUrl();
 
 		return new Request(
-			$url, NULL, $request->getPost(), $request->getFiles(), $request->getCookies(), $request->getHeaders(),
+			$url, $request->getPost(), $request->getFiles(), $request->getCookies(), $request->getHeaders(),
 			$this->getPreferredMethod($request), $request->getRemoteAddress(), null,
 			function () use ($request) { return $request->getRawBody(); }
 		);
