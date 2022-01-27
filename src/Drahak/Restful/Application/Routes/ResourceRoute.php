@@ -32,12 +32,14 @@ class ResourceRoute extends Route implements IResourceRouter
 		'OPTIONS' => self::OPTIONS,
 	);
 
+        private $flags;
+        
 	/**
 	 * @param string $mask
 	 * @param array|string $metadata
 	 * @param int $flags
 	 */
-	public function __construct($mask, $metadata = array())
+	public function __construct($mask, $metadata = array(), $flags = '')
 	{
 		$this->actionDictionary = array();
 		if (isset($metadata['action']) && is_array($metadata['action'])) {
@@ -50,7 +52,7 @@ class ResourceRoute extends Route implements IResourceRouter
 				$action = end($metadataParts);
 			}
 		}
-
+                $this->flags = $flags;
 		parent::__construct($mask, $metadata);
 	}
 
@@ -65,7 +67,7 @@ class ResourceRoute extends Route implements IResourceRouter
 		$isActionDefined = $this->actionDictionary && !in_array($method, $common) ?
 			isset($this->actionDictionary[$method]) :
 			TRUE;
-		return ($this->getFlags() & $method) == $method && $isActionDefined;
+		return ($this->flags & $method) == $method && $isActionDefined;
 	}
 
 	/**
