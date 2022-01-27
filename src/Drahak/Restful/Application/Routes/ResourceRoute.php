@@ -123,13 +123,13 @@ class ResourceRoute extends Route implements IResourceRouter
 
 		// If there is action dictionary, set method
 		if ($this->actionDictionary) {
-			$parameters = $appRequest->getParameters();
+                        bdump($appRequest);
+			$parameters = $appRequest;
 			$parameters['action'] = $this->actionDictionary[$methodFlag];
 			$parameters['action'] = self::formatActionName($this->actionDictionary[$methodFlag], $parameters);
-			$appRequest->setParameters($parameters);
 		}
 
-		return $appRequest;
+		return $parameters;
 	}
 
 	/**
