@@ -16,7 +16,7 @@ class Strings extends Nette\Utils\Strings
 	 * @param string $s
 	 * @return string
 	 */
-	public static function firstLower($s)
+	public static function firstLower($s): string
 	{
 		return self::lower(self::substring($s, 0, 1)) . self::substring($s, 1);
 	}
@@ -26,7 +26,7 @@ class Strings extends Nette\Utils\Strings
 	 * @param string $string
 	 * @return string
 	 */
-	public static function toCamelCase($string)
+	public static function toCamelCase($string): string
 	{
 		$func = function($matches) {
 			return self::upper($matches[2]);
@@ -40,7 +40,7 @@ class Strings extends Nette\Utils\Strings
 	 * @param string $string
 	 * @return string
 	 */
-	public static function toPascalCase($string)
+	public static function toPascalCase($string): string
 	{
 		return self::firstUpper(self::toCamelCase($string));
 	}
@@ -50,7 +50,7 @@ class Strings extends Nette\Utils\Strings
 	 * @param string $string
 	 * @return string
 	 */
-	public static function toSnakeCase($string)
+	public static function toSnakeCase($string): string
 	{
 		$replace = array(' ', '-');
 		return self::trim(
