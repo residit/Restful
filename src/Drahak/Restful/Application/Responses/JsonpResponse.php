@@ -33,7 +33,7 @@ class JsonpResponse extends BaseResponse
 	 * @param IResponse $httpResponse
 	 * @throws \Drahak\Restful\InvalidArgumentException
 	 */
-	public function send(IRequest $httpRequest, IResponse $httpResponse)
+	public function send(IRequest $httpRequest, IResponse $httpResponse): void
 	{
 		$httpResponse->setContentType($this->contentType ? $this->contentType : 'application/javascript', 'UTF-8');
 

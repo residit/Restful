@@ -64,7 +64,7 @@ class ErrorResponse implements IResponse {
 	 * @param Http\IRequest $httpRequest
 	 * @param Http\IResponse $httpResponse
 	 */
-	public function send(Http\IRequest $httpRequest, Http\IResponse $httpResponse) {
+	public function send(Http\IRequest $httpRequest, Http\IResponse $httpResponse):void {
 		$httpResponse->setCode($this->code);
 		$this->response->send($httpRequest, $httpResponse);
 	}

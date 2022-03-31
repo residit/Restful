@@ -29,7 +29,7 @@ class TextResponse extends BaseResponse
 	 * @param Http\IRequest $httpRequest
 	 * @param Http\IResponse $httpResponse
 	 */
-	public function send(Http\IRequest $httpRequest, Http\IResponse $httpResponse)
+	public function send(Http\IRequest $httpRequest, Http\IResponse $httpResponse): void
 	{
 		$httpResponse->setContentType($this->contentType ? $this->contentType : 'text/plain', 'UTF-8');
 		echo $this->mapper->stringify($this->data, $this->isPrettyPrint());

@@ -29,7 +29,7 @@ class FileResponse extends BaseResponse
 	 * @param Http\IRequest $httpRequest
 	 * @param Http\IResponse $httpResponse
 	 */
-	public function send(Http\IRequest $httpRequest, Http\IResponse $httpResponse)
+	public function send(Http\IRequest $httpRequest, Http\IResponse $httpResponse):void
 	{
 		$httpResponse->setContentType($this->data->contentType);
 		echo $this->data;
