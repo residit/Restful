@@ -59,7 +59,7 @@ class MethodOptions {
 	private function checkAvailableMethods(IRouter $router, UrlScript $url)
 	{
 		$methods = array();
-		foreach ($router as $route) {
+		foreach ($router->getRouters() as $route) {
 			if ($route instanceof IResourceRouter && !$route instanceof Traversable) {
 				$methodFlag = $this->getMethodFlag($route);
 				if (!$methodFlag) continue;
