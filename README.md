@@ -19,7 +19,6 @@ This repository is being developed.
 - [Input data validation](#input-data-validation)
 - [Error presenter](#error-presenter)
 - [Security & authentication](#security--authentication)
-- [Secure your resources with OAuth2](#secure-your-resources-with-oauth2)
 - [JSONP support](#jsonp-support)
 - [Utilities that make life better](#utilities-that-make-life-better)
 
@@ -443,55 +442,6 @@ class CrudPresenter extends BasePresenter
 ```
 
 ##### Never send private key!
-
-Secure your resources with OAuth2
----------------------------------
-If you want to secure your API resource with OAuth2, you will need some OAuth2 provider. I've implemented [OAuth2 provider](https://github.com/drahak/OAuth2) bundle for Nette framework so you can use it with Restful. To do so just add dependency `"drahak/oauth2": "dev-master"` to your composer and then use `OAuth2Authentication` which is `AuthenticationProcess`. If you wish to use any other OAuth2 provider, you can write your own `AuthenticationProcess`.
-
-```php
-<?php
-namespace Restful\Api;
-
-use Drahak\Restful\IResource;
-use Drahak\Restful\Security\Process\AuthenticationProcess;
-use Drahak\Restful\Security\Process\OAuth2Authentication;
-
-/**
- * CRUD resource presenter
- * @package Restful\Api
- * @author Drahomír Hanák
- */
-class CrudPresenter extends BasePresenter
-{
-
-	/** @var AuthenticationProcess */
-	private $authenticationProcess;
-
-	/**
-	 * Inject authentication process
-	 * @param OAuth2Authentication $auth
-	 */
-	public function injectSecuredAuthentication(OAuth2Authentication $auth)
-	{
-		$this->authenticationProcess = $auth;
-	}
-
-	/**
-	 * Check presenter requirements
-	 * @param $element
-	 */
-	public function checkRequirements($element)
-	{
-		parent::checkRequirements($element);
-		$this->authentication->setAuthProcess($this->authenticationProcess);
-	}
-
-	// ...
-
-}
-```
-
-Note: this is only Resource server so it handles access token authorization. To generate access token you'll need to create OAuth2 presenter (Resource owner and authorization server - see [Drahak\OAuth2 documentation](https://github.com/drahak/OAuth2)).
 
 JSONP support
 -------------
