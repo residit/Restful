@@ -330,11 +330,6 @@ class RestfulExtension extends CompilerExtension
 			->setClass('Drahak\Restful\Security\AuthenticationContext')
 			->addSetup('$service->setAuthProcess(?)', array($this->prefix('@security.nullAuthentication')));
 
-		// enable OAuth2 in Restful
-		if ($this->getByType($container, 'Drahak\OAuth2\KeyGenerator')) {
-			$container->addDefinition($this->prefix('security.oauth2Authentication'))
-				->setClass('Drahak\Restful\Security\Process\OAuth2Authentication');
-		}
 	}
 
 	/**
